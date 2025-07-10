@@ -10,7 +10,7 @@ const MovieDetails = () => {
     const { data: movie, isLoading } = useMovieDetails(movieId);
 
     const { state, dispatch } = useFavorites();
-    const isFavourite = state.movies.some((m) => m.id === movieId);
+    const isFavorite = state.movies.some((m) => m.id === movieId);
 
     if (isLoading) return <Loader size="lg" />;
 
@@ -60,22 +60,15 @@ const MovieDetails = () => {
                     <button
                         onClick={() =>
                             dispatch({
-                                type: isFavourite ? "REMOVE" : "ADD",
-                                payload: isFavourite
-                                    ? movieId
-                                    : {
-                                          id: movie?.id,
-                                          title: movie?.title,
-                                          poster_path: movie?.poster_path,
-                                          release_date: movie?.release_date,
-                                      },
+                                type: isFavorite ? "REMOVE" : "ADD",
+                                payload: isFavorite ? movieId : movie,
                             })
                         }
                         className={`px-6 py-2 rounded bg-${
-                            isFavourite ? "red" : "blue"
+                            isFavorite ? "red" : "blue"
                         }-600 text-white`}
                     >
-                        {isFavourite
+                        {isFavorite
                             ? "Remove from favorites"
                             : "Add to favorites"}
                     </button>
@@ -83,10 +76,10 @@ const MovieDetails = () => {
             </div>
 
             {/* CAST */}
-            {movie?.credits.cast.length > 0 && (
+            {/* @ts-expect-error movie.videos may be missing type info */}
+            {movie?.credits?.cast?.length > 0 && (
                 <div className="mt-10">
                     <h3 className="text-2xl font-bold mb-4">Cast</h3>
-
                     <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
                         {movie?.credits.cast.slice(0, 10).map((actor) => (
                             <div className="text-center" key={actor.id}>
@@ -99,7 +92,6 @@ const MovieDetails = () => {
                                 ) : (
                                     <div className="w-24 h-24 rounded-full bg-gray-400 mx-auto mb-2" />
                                 )}
-
                                 <p className="text-sm font-semibold">
                                     {actor.name}
                                 </p>
@@ -113,13 +105,28 @@ const MovieDetails = () => {
             )}
 
             {/* TRAILERS */}
+            {/* @ts-expect-error movie.videos may be missing type info */}
             {movie?.videos.results.length > 0 && (
                 <div className="mt-10">
                     <h3 className="text-2xl font-bold mb-4">Trailers</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {movie?.videos.results.filter(v => v.site === "YouTube" && v.type === "Trailer").slice(0,2).map(video => (
-                            <iframe key={video.id} width="100%" height="315" src={`https://www.youtube.com/embed/${video.key}`} title={video.name} allowFullScreen className="rounded-lg shadow" />
-                        ))}
+                        {movie?.videos.results
+                            .filter(
+                                (v) =>
+                                    v.site === "YouTube" && v.type === "Trailer"
+                            )
+                            .slice(0, 2)
+                            .map((video) => (
+                                <iframe
+                                    key={video.id}
+                                    width="100%"
+                                    height="315"
+                                    src={`https://www.youtube.com/embed/${video.key}`}
+                                    title={video.name}
+                                    allowFullScreen
+                                    className="rounded-lg shadow"
+                                />
+                            ))}
                     </div>
                 </div>
             )}

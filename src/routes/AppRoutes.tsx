@@ -3,6 +3,7 @@ import Header from "@/components/Layout/Header";
 import Home from "@/pages/Home";
 import Footer from "@/components/Layout/Footer";
 import MovieDetails from "@/pages/MovieDetails";
+import Search from "@/pages/Search";
 
 const AppRoutes = () => {
     return (
@@ -13,7 +14,7 @@ const AppRoutes = () => {
                 <main className="flex-grow">
                   <Routes>
                     <Route path="/" element={<Home />} />
-                    {/* <Route path="/search" element={<Search />} /> */}
+                    <Route path="/search" element={<Search />} />
                     {/* <Route path="/favorites" element={<Favorites />} /> */}
                     <Route path="/movie/:id" element={<MovieDetails />} />
                     {/* <Route path="/actor/:id" element={<ActorDetails />} /> */}

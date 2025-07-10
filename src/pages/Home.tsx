@@ -3,6 +3,7 @@ import { usePopularMovies } from "@/hooks/usePopularMovies";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
 import MovieCard from "@/components/Movie/MovieCard";
 import Loader  from "@/components/Shared/Loader";
+import type { Movie } from "@/api/movie.service";
 
 const Home = () => {
     const [page, setPage] = useState(1);
@@ -16,7 +17,7 @@ const Home = () => {
 
     return (
         <div className="p-6 grid grid-cols-2 md:grid-cols-4 gap-6">
-            {data?.results?.map((movie) => (
+            {data?.results?.map((movie: Movie) => (
                 <MovieCard
                     key={movie.id}
                     id={movie.id}

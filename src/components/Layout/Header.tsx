@@ -22,13 +22,13 @@ const Header = () => {
                     Home
                 </Link>
                 <Link
-                    to="/about"
+                    to="/favorites"
                     className="hover:text-blue-600 dark:hover:text-blue-400"
                 >
                     Favorites
                 </Link>
                 <Link
-                    to="/contact"
+                    to="/search"
                     className="hover:text-blue-600 dark:hover:text-blue-400"
                 >
                     Search
