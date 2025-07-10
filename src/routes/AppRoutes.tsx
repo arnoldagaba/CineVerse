@@ -4,6 +4,7 @@ import Home from "@/pages/Home";
 import Footer from "@/components/Layout/Footer";
 import MovieDetails from "@/pages/MovieDetails";
 import Search from "@/pages/Search";
+import Favorites from "@/pages/Favorites";
 
 const AppRoutes = () => {
     return (
@@ -15,7 +16,7 @@ const AppRoutes = () => {
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/search" element={<Search />} />
-                    {/* <Route path="/favorites" element={<Favorites />} /> */}
+                    <Route path="/favorites" element={<Favorites />} />
                     <Route path="/movie/:id" element={<MovieDetails />} />
                     {/* <Route path="/actor/:id" element={<ActorDetails />} /> */}
                     {/* <Route path="*" element={<NotFound />} /> */}
