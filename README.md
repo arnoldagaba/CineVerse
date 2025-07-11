@@ -48,7 +48,7 @@
 ### 🛠 Install dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ## ⚙ Setup environment variables
