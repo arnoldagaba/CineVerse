@@ -5,6 +5,8 @@ import Footer from "@/components/Layout/Footer";
 import MovieDetails from "@/pages/MovieDetails";
 import Search from "@/pages/Search";
 import Favorites from "@/pages/Favorites";
+import NotFound from "@/pages/NotFound";
+import ActorDetails from "@/pages/ActorDetails";
 
 const AppRoutes = () => {
     return (
@@ -18,8 +20,8 @@ const AppRoutes = () => {
                     <Route path="/search" element={<Search />} />
                     <Route path="/favorites" element={<Favorites />} />
                     <Route path="/movie/:id" element={<MovieDetails />} />
-                    {/* <Route path="/actor/:id" element={<ActorDetails />} /> */}
-                    {/* <Route path="*" element={<NotFound />} /> */}
+                    <Route path="/actor/:id" element={<ActorDetails />} />
+                    <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
 

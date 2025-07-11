@@ -9,7 +9,7 @@ const Loader = ({ size = "md" }: LoaderProps) => {
         lg: "h-16 w-16 border-4",
     };
     return (
-        <div className="flex justify-center items-center p-4">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
             <div
                 className={`rounded-full border-t-blue-500 border-r-transparent animate-spin ${sizes[size]}`}
                 style={{ borderStyle: "solid" }}
