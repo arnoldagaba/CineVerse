@@ -8,13 +8,24 @@ import Search from "@/pages/Search";
 import Favorites from "@/pages/Favorites";
 import NotFound from "@/pages/NotFound";
 import ActorDetails from "@/pages/ActorDetails";
+import { useEffect } from "react";
+
+function ScrollToTop() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+    return null;
+}
 
 const AnimatedRoutes = () => {
     const location = useLocation();
-    
+
     return (
         <>
             <Header />
+            <ScrollToTop />
             <AnimatePresence mode="wait">
                 <motion.main
                     key={location.pathname}

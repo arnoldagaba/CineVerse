@@ -130,23 +130,28 @@ const MovieDetails = () => {
                     <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
                         {cast.slice(0, 10).map((actor) => (
                             <div className="text-center" key={actor.id}>
-                                {actor.profile_path ? (
-                                    <img
-                                        src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
-                                        alt={actor.name}
-                                        className="rounded-full w-24 h-24 object-cover mx-auto mb-2"
-                                    />
-                                ) : (
-                                    <div className="w-24 h-24 rounded-full bg-gray-400 flex items-center justify-center mx-auto mb-2 text-xs text-white">
-                                        No Image
-                                    </div>
-                                )}
-                                <p className="text-sm font-semibold">
-                                    {actor.name}
-                                </p>
-                                <p className="text-xs text-gray-600">
-                                    {actor.character}
-                                </p>
+                                <a
+                                    href={`/actor/${actor.id}`}
+                                    className="block group"
+                                >
+                                    {actor.profile_path ? (
+                                        <img
+                                            src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
+                                            alt={actor.name}
+                                            className="rounded-full w-24 h-24 object-cover mx-auto mb-2 group-hover:scale-105 transition-transform"
+                                        />
+                                    ) : (
+                                        <div className="w-24 h-24 rounded-full bg-gray-400 flex items-center justify-center mx-auto mb-2 text-xs text-white">
+                                            No Image
+                                        </div>
+                                    )}
+                                    <p className="text-sm font-semibold group-hover:underline">
+                                        {actor.name}
+                                    </p>
+                                    <p className="text-xs text-gray-600">
+                                        {actor.character}
+                                    </p>
+                                </a>
                             </div>
                         ))}
                     </div>
